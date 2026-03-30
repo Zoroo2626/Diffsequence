@@ -1,0 +1,55 @@
+{
+  "name": "diffsequence",
+  "version": "1.0.0",
+  "description": "A consequence engine for code changes. Predicts what your diff will break, affect, and ripple through.",
+  "type": "module",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "diffsequence": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "git",
+    "diff",
+    "impact-analysis",
+    "code-review",
+    "consequence",
+    "dependency-graph",
+    "static-analysis",
+    "developer-tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.0",
+    "@babel/traverse": "^7.26.0",
+    "@babel/types": "^7.26.0",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "cli-table3": "^0.6.5",
+    "commander": "^13.1.0",
+    "cosmiconfig": "^9.0.0",
+    "glob": "^11.0.1",
+    "ora": "^8.2.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "^7.20.6",
+    "@types/node": "^22.13.0",
+    "eslint": "^9.18.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
