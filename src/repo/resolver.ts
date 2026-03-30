@@ -18,6 +18,27 @@ export function resolveImport(importSource: string, fromFile: string, rootPath: 
     if (fs.existsSync(normalized)) {
       return toRelative(normalized, rootPath);
     }
+
+    // NodeNext: .js imports might map to .ts files
+    const ext = path.extname(importSource);
+    if (ext === '.js' || ext === '.jsx') {
+      const tsEquivalents = ext === '.js' ? ['.ts', '.tsx'] : ['.tsx', '.ts'];
+      const base = normalized.slice(0, -ext.length);
+      for (const tsExt of tsEquivalents) {
+        if (fs.existsSync(base + tsExt)) {
+          return toRelative(base + tsExt, rootPath);
+        }
+      }
+    }
+
+    // also try stripping the extension and searching fresh
+    const withoutExt = absolute.slice(0, -ext.length);
+    for (const tryExt of SOURCE_EXTENSIONS) {
+      if (fs.existsSync(withoutExt + tryExt)) {
+        return toRelative(withoutExt + tryExt, rootPath);
+      }
+    }
+
     return null;
   }
 
