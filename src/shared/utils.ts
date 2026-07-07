@@ -6,7 +6,7 @@ export function generateId(): string {
 }
 
 export function relativePath(from: string, to: string): string {
-  const rel = path.relative(from, to);
+  const rel = path.relative(from, to).replace(/\\/g, '/');
   return rel.startsWith('.') ? rel : `./${rel}`;
 }
 
