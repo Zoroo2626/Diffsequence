@@ -7,8 +7,8 @@ Thanks for wanting to contribute. Here's everything you need to know to get star
 1. Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/diffsequence/diffsequence.git
-cd diffsequence
+git clone https://github.com/Zoroo2626/Diffsequence.git
+cd Diffsequence
 npm install
 ```
 
